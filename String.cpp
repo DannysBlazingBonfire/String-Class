@@ -50,7 +50,7 @@ String& String::operator=(const String& rhs)
 	char* tempPtr;
 	delete[] cstrPtr; //deallocate memory
 	strSize = rhs.size(); //assign new size
-	strcapacity = rhs.size() + 10; //new capacity of strings size + 10 empty spaces
+	strcapacity = rhs.size() * 2; //new capacity of strings size + 10 empty spaces
 	tempPtr = new char[strcapacity]; //allocate memory
 	std::copy(rhs.cstrPtr, rhs.cstrPtr + rhs.size(), tempPtr);
 	cstrPtr = tempPtr;
@@ -116,7 +116,7 @@ void String::push_back(char c)
 	{
 		//increase array size;
 		char* tempPtr;
-		strcapacity += 10;
+		strcapacity = strSize * 2;
 		tempPtr = new char[strcapacity]; //allocate memory
 		std::copy(cstrPtr, cstrPtr + strSize, tempPtr);
 		delete[] cstrPtr; //deallocate memory
